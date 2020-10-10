@@ -3,6 +3,14 @@
 import csv
 import numpy as np
 
+def build_poly(x, degree):
+    """polynomial basis functions for input data x, for j=0 up to j=degree."""
+    result = np.zeros((degree+1,len(x), x.shape[1]))
+    for i in range(degree+1):
+        temp = np.power(x,i)
+        result[i] = temp
+    return result.T
+
 
 def load_csv_data(data_path, sub_sample=False):
     """Loads data and returns y (class labels), tX (features) and ids (event ids)"""
